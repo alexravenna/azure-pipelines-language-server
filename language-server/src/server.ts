@@ -203,7 +203,6 @@ let schemaAssociations: ISchemaAssociations = void 0;
 let formatterRegistration: Thenable<Disposable> = null;
 let specificValidatorPaths = [];
 let schemaConfigurationSettings = [];
-let schemaStoreSettings = [];
 let customTags = [];
 
 connection.onDidChangeConfiguration((change) => {
@@ -239,41 +238,6 @@ connection.onDidChangeConfiguration((change) => {
 		}
 	}
 });
-
-function getSchemaStoreMatchingSchemas(){
-
-	return xhr({ url: "http://schemastore.org/api/json/catalog.json" }).then(response => {
-
-		let languageSettings= {
-			schemas: []
-		};
-
-		let schemas = JSON.parse(response.responseText);
-		for(let schemaIndex in schemas.schemas){
-
-			let schema = schemas.schemas[schemaIndex];
-			if(schema && schema.fileMatch){
-
-				for(let fileMatch in schema.fileMatch){
-					let currFileMatch = schema.fileMatch[fileMatch];
-
-					if(currFileMatch.indexOf('.yml') !== -1 || currFileMatch.indexOf('.yaml') !== -1){
-						languageSettings.schemas.push({ uri: schema.url, fileMatch: [currFileMatch] });
-					}
-
-				}
-
-			}
-
-		}
-
-		return languageSettings;
-
-	}, (error: XHRResponse) => {
-		throw error;
-	});
-
-}
 
 connection.onNotification(SchemaAssociationNotification.type, associations => {
 	schemaAssociations = associations;
@@ -314,9 +278,6 @@ function updateConfiguration() {
 				languageSettings = configureSchemas(uri, schema.fileMatch, schema.schema, languageSettings);
 			}
 		});
-	}
-	if(schemaStoreSettings){
-		languageSettings.schemas = languageSettings.schemas.concat(schemaStoreSettings);
 	}
 	customLanguageService.configure(languageSettings);
 

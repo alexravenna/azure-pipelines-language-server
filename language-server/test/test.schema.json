@@ -1,0 +1,85 @@
+{
+  "type": "object",
+  "properties": {
+    "analytics": {
+      "type": "boolean",
+      "description": "Enable analytics."
+    },
+    "authors": {
+      "type": "array",
+      "description": "Package authors.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Author name."
+          },
+          "email": {
+            "type": "string",
+            "description": "Author email."
+          }
+        }
+      }
+    },
+    "cwd": {
+      "type": "string",
+      "description": "Working directory."
+    },
+    "customize": {
+      "type": "string"
+    },
+    "directory": {
+      "type": "string",
+      "default": "bower_components"
+    },
+    "license": {
+      "type": [
+        "string",
+        "array"
+      ]
+    },
+    "registry": {
+      "type": "object",
+      "properties": {
+        "register": {
+          "type": "string"
+        },
+        "search": {
+          "type": "string"
+        }
+      }
+    },
+    "resolvers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "scripts": {
+      "type": "object",
+      "description": "Lifecycle scripts.",
+      "properties": {
+        "postinstall": {
+          "type": "string",
+          "description": "Command to run after installation."
+        },
+        "preinstall": {
+          "type": "string",
+          "description": "Command to run before installation."
+        }
+      },
+      "additionalProperties": {
+        "type": "string",
+        "description": "Lifecycle script command."
+      }
+    },
+    "storage": {
+      "type": "object"
+    },
+    "timeout": {
+      "type": "number",
+      "default": 60000
+    }
+  }
+}

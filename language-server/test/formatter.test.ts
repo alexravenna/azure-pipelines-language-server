@@ -4,13 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 import { TextDocument } from 'vscode-languageserver-textdocument';
 import { getLanguageService } from 'azure-pipelines-language-service'
-import { schemaRequestService, workspaceContext } from './testHelper';
+import { schemaRequestService, testSchemaUri, workspaceContext } from './testHelper';
 var assert = require('assert');
 
 let languageService = getLanguageService(schemaRequestService, [], null, workspaceContext);
 
 
-let uri = 'http://json.schemastore.org/bowerrc';
+let uri = testSchemaUri;
 let languageSettings = {
     schemas: [],
     validate: true,

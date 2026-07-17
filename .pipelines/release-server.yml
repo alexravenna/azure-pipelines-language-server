@@ -17,7 +17,7 @@ extends:
   template: v1/1ES.Official.PipelineTemplate.yml@1ESPipelineTemplates
   parameters:
     settings:
-      networkIsolationPolicy: Permissive
+      networkIsolationPolicy: Permissive,Npm
     sdl:
       sourceAnalysisPool:
         name: 1ES-ABTT-Shared-Pool
