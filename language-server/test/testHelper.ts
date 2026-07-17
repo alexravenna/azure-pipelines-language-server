@@ -48,7 +48,7 @@ export let workspaceContext = {
 	}
 };
 
-let testSchemaPath = __dirname.replace("\\", "/");
+let testSchemaPath = __dirname.replace(/\\/g, "/");
 if (!testSchemaPath.startsWith("/")) {
 	testSchemaPath = "/" + testSchemaPath;
 }
