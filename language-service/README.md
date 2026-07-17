@@ -41,7 +41,7 @@ yaml.schemas: {
 e.g.
 ```
 yaml.schemas: {
-    "http://json.schemastore.org/composer": "/*"
+    "file:///path/to/schema.json": "/*"
 }
 ```
 
@@ -62,7 +62,7 @@ yaml.schemas: {
 e.g.
 ```
 yaml.schemas: {
-    "http://json.schemastore.org/composer": "/*",
+    "file:///path/to/schema.json": "/*",
     "kubernetes": "/myYamlFile.yaml"
 }
 ```

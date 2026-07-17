@@ -48,6 +48,12 @@ export let workspaceContext = {
 	}
 };
 
+let testSchemaPath = __dirname.replace(/\\/g, "/");
+if (!testSchemaPath.startsWith("/")) {
+	testSchemaPath = "/" + testSchemaPath;
+}
+export const testSchemaUri = 'file://' + testSchemaPath + '/test.schema.json';
+
 export const schemaRequestService = async (uri: string): Promise<JSONSchema> => {
 	if (Strings.startsWith(uri, 'file://')) {
 		const fsPath = URI.parse(uri).fsPath;
